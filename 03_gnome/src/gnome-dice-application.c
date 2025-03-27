@@ -98,4 +98,26 @@ gnome_dice_application_init (GnomeDiceApplication *self)
 	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
 	                                       "app.quit",
 	                                       (const char *[]) { "<primary>q", NULL });
+
+	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
+	                                       "win.fixed_dice::4",
+	                                       (const char *[]) { "<primary>1", NULL });
+	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
+	                                       "win.fixed_dice::6",
+	                                       (const char *[]) { "<primary>2", NULL });
+	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
+	                                       "win.fixed_dice::8",
+	                                       (const char *[]) { "<primary>3", NULL });
+	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
+	                                       "win.fixed_dice::10",
+	                                       (const char *[]) { "<primary>4", NULL });
+	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
+	                                       "win.fixed_dice::12",
+	                                       (const char *[]) { "<primary>5", NULL });
+	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
+	                                       "win.fixed_dice::20",
+	                                       (const char *[]) { "<primary>6", NULL });
+	gtk_application_set_accels_for_action (GTK_APPLICATION (self),
+	                                       "win.custom_dice",
+	                                       (const char *[]) { "<primary>7", NULL });
 }
