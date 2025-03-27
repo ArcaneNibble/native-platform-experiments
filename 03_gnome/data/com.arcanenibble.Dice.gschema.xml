@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="gnome-dice">
 	<schema id="com.arcanenibble.Dice" path="/com/arcanenibble/Dice/">
+	  <key name="dice-type" type="i">
+	    <default>20</default>
+	  </key>
 	</schema>
 </schemalist>

@@ -8,6 +8,8 @@ struct _GnomeDiceWindow
 {
 	AdwApplicationWindow  parent_instance;
 
+        GSettings *settings;
+
 	/* Template widgets */
 	AdwHeaderBar        *header_bar;
 	GtkButton           *button;
@@ -27,6 +29,8 @@ static void roll_button(GAction         *_action,
 }
 
 static void update_dice_type(GnomeDiceWindow *self) {
+  g_settings_set_int (self->settings, "dice-type", self->dice_max_roll);
+
   char dice_max_str[32];
   snprintf (dice_max_str, sizeof(dice_max_str), "D%d", self->dice_max_roll);
   gtk_menu_button_set_label (self->menu_button, dice_max_str);
@@ -42,8 +46,11 @@ static void fixed_dice(GAction         *_action,
 
 static void custom_dice_done(CustomDiceDialog *dice_dialog,
                              GnomeDiceWindow  *dice_window) {
-  dice_window->dice_max_roll = custom_dice_get_val (dice_dialog);
-  update_dice_type (dice_window);
+  int maybe_new_roll = custom_dice_get_val (dice_dialog);
+  if (maybe_new_roll) {
+    dice_window->dice_max_roll = maybe_new_roll;
+    update_dice_type (dice_window);
+  }
 }
 
 static void custom_dice(GAction         *_action,
@@ -56,10 +63,21 @@ static void custom_dice(GAction         *_action,
 
 G_DEFINE_FINAL_TYPE (GnomeDiceWindow, gnome_dice_window, ADW_TYPE_APPLICATION_WINDOW)
 
+static void gnome_dice_window_finalize(GObject *gobject) {
+  GnomeDiceWindow *self = GNOME_DICE_WINDOW (gobject);
+
+  g_clear_object (&self->settings);
+
+  G_OBJECT_CLASS (gnome_dice_window_parent_class)->finalize (gobject);
+}
+
 static void
 gnome_dice_window_class_init (GnomeDiceWindowClass *klass)
 {
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+        GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+
+        gobject_class->finalize = gnome_dice_window_finalize;
 
 	gtk_widget_class_set_template_from_resource (widget_class, "/com/arcanenibble/Dice/gnome-dice-window.ui");
 	gtk_widget_class_bind_template_child (widget_class, GnomeDiceWindow, header_bar);
@@ -72,7 +90,9 @@ gnome_dice_window_init (GnomeDiceWindow *self)
 {
 	gtk_widget_init_template (GTK_WIDGET (self));
 
-  self->dice_max_roll = 20;
+  self->settings = g_settings_new ("com.arcanenibble.Dice");
+
+  self->dice_max_roll = g_settings_get_int (self->settings, "dice-type");
   update_dice_type (self);
 
   g_autoptr(GSimpleAction) roll_action = g_simple_action_new ("roll", 0);
@@ -87,3 +107,4 @@ gnome_dice_window_init (GnomeDiceWindow *self)
   g_signal_connect (custom_dice_action, "activate", G_CALLBACK (custom_dice), self);
   g_action_map_add_action (G_ACTION_MAP (self), G_ACTION(custom_dice_action));
 }
+
