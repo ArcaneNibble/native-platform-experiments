@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ArcaneNibble Demo Dice
+Exec=gnome-dice
+Icon=com.arcanenibble.Dice
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
