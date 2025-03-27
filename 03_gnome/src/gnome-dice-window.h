@@ -10,3 +10,4 @@ G_BEGIN_DECLS
 G_DECLARE_FINAL_TYPE (GnomeDiceWindow, gnome_dice_window, GNOME_DICE, WINDOW, AdwApplicationWindow)
 
 G_END_DECLS
+

@@ -48,7 +48,6 @@ test_c_args = [
   '-Wignored-qualifiers',
   '-Wimplicit-function-declaration',
   '-Wlogical-op',
-  '-Wmissing-declarations',
   '-Wmissing-format-attribute',
   '-Wmissing-include-dirs',
   '-Wmissing-noreturn',

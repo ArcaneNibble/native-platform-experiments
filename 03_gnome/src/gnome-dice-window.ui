@@ -88,6 +88,10 @@
         <attribute name="action">win.fixed_dice</attribute>
         <attribute name="target">20</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Custom...</attribute>
+        <attribute name="action">win.custom_dice</attribute>
+      </item>
     </section>
   </menu>
 </interface>

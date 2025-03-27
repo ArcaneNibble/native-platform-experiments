@@ -2,6 +2,7 @@
 #include "config.h"
 
 #include "gnome-dice-window.h"
+#include "custom-dice-dialog.h"
 
 struct _GnomeDiceWindow
 {
@@ -39,6 +40,20 @@ static void fixed_dice(GAction         *_action,
   update_dice_type (self);
 }
 
+static void custom_dice_done(CustomDiceDialog *dice_dialog,
+                             GnomeDiceWindow  *dice_window) {
+  dice_window->dice_max_roll = custom_dice_get_val (dice_dialog);
+  update_dice_type (dice_window);
+}
+
+static void custom_dice(GAction         *_action,
+                        GVariant        *_parameter,
+                        GnomeDiceWindow *self) {
+  CustomDiceDialog *dice_dialog = g_object_new (CUSTOM_DICE_TYPE_DIALOG, 0);
+  g_signal_connect_object (dice_dialog, "closed", G_CALLBACK(custom_dice_done), self, 0);
+  adw_dialog_present (ADW_DIALOG (dice_dialog), GTK_WIDGET(self));
+}
+
 G_DEFINE_FINAL_TYPE (GnomeDiceWindow, gnome_dice_window, ADW_TYPE_APPLICATION_WINDOW)
 
 static void
@@ -67,4 +82,8 @@ gnome_dice_window_init (GnomeDiceWindow *self)
   g_autoptr(GSimpleAction) fixed_dice_action = g_simple_action_new ("fixed_dice", G_VARIANT_TYPE_STRING);
   g_signal_connect (fixed_dice_action, "activate", G_CALLBACK (fixed_dice), self);
   g_action_map_add_action (G_ACTION_MAP (self), G_ACTION(fixed_dice_action));
+
+  g_autoptr(GSimpleAction) custom_dice_action = g_simple_action_new ("custom_dice", 0);
+  g_signal_connect (custom_dice_action, "activate", G_CALLBACK (custom_dice), self);
+  g_action_map_add_action (G_ACTION_MAP (self), G_ACTION(custom_dice_action));
 }

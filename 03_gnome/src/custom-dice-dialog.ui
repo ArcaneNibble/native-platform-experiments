@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="CustomDiceDialog" parent="AdwDialog">
+    <property name="title">Set Custom Dice</property>
+    <property name="follows-content-size">False</property>
+    <property name="default-widget">okay_button</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar" id="header_bar"/>
+        </child>
+        <property name="content">
+          <object class="GtkEntry" id="entry">
+            <property name="activates-default">True</property>
+          </object>
+        </property>
+        <child type="bottom">
+          <object class="GtkButton" id="okay_button">
+            <property name="label" translatable="yes">OK</property>
+            <signal name="clicked" handler="custom_dice_ok"/>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>
+
