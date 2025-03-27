@@ -10,6 +10,14 @@
       <object class="AdwToolbarView">
         <child type="top">
           <object class="AdwHeaderBar" id="header_bar">
+            <child type="title">
+              <object class="GtkMenuButton" id="menu_button">
+                <property name="menu_model">window_menu</property>
+                <property name="focus_on_click">False</property>
+                <property name="always_show_arrow">True</property>
+                <property name="tooltip_text" translatable="yes">Change Dice Type</property>
+              </object>
+            </child>
             <child type="end">
               <object class="GtkMenuButton">
                 <property name="primary">True</property>
@@ -45,6 +53,40 @@
       <item>
         <attribute name="label" translatable="yes">_About Demo Dice</attribute>
         <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+  <menu id="window_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">D_4</attribute>
+        <attribute name="action">win.fixed_dice</attribute>
+        <attribute name="target">4</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">D_6</attribute>
+        <attribute name="action">win.fixed_dice</attribute>
+        <attribute name="target">6</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">D_8</attribute>
+        <attribute name="action">win.fixed_dice</attribute>
+        <attribute name="target">8</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">D_10</attribute>
+        <attribute name="action">win.fixed_dice</attribute>
+        <attribute name="target">10</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_D12</attribute>
+        <attribute name="action">win.fixed_dice</attribute>
+        <attribute name="target">12</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">D_20</attribute>
+        <attribute name="action">win.fixed_dice</attribute>
+        <attribute name="target">20</attribute>
       </item>
     </section>
   </menu>
