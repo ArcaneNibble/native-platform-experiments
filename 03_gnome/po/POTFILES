@@ -4,3 +4,5 @@ data/com.arcanenibble.Dice.gschema.xml
 src/main.c
 src/gnome-dice-window.c
 src/gnome-dice-window.ui
+src/custom-dice-dialog.c
+src/custom-dice-dialog.ui

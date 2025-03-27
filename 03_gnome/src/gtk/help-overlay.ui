@@ -23,6 +23,59 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcut window">Dice type</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a D4</property>
+                <property name="action-name">win.fixed_dice::4</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a D4</property>
+                <property name="action-name">win.fixed_dice::4</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a D6</property>
+                <property name="action-name">win.fixed_dice::6</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a D8</property>
+                <property name="action-name">win.fixed_dice::8</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a D10</property>
+                <property name="action-name">win.fixed_dice::10</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a D12</property>
+                <property name="action-name">win.fixed_dice::12</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a D20</property>
+                <property name="action-name">win.fixed_dice::20</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Roll a custom dice</property>
+                <property name="action-name">win.custom_dice</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </object>
