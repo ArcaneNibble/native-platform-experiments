@@ -4,5 +4,5 @@ Exec=gnome-dice
 Icon=com.arcanenibble.Dice
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=GTK;Game
 StartupNotify=true

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-dice\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-28 00:43+0000\n"
+"POT-Creation-Date: 2025-03-28 01:07+0000\n"
 "PO-Revision-Date: 2025-03-28 00:15+0000\n"
 "Last-Translator: ArcaneNibble\n"
 "Language-Team: none\n"
@@ -20,6 +20,7 @@ msgid "ArcaneNibble Demo Dice"
 msgstr "ArcaneNibble的演示骰子APP"
 
 #: data/com.arcanenibble.Dice.metainfo.xml.in:7
+#: data/com.arcanenibble.Dice.metainfo.xml.in:9
 msgid "Demo GNOME dice app"
 msgstr "ArcaneNibble的演示用GNOME的骰子APP"
 
