@@ -34,12 +34,6 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Roll a D4</property>
-                <property name="action-name">win.fixed_dice::4</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Roll a D6</property>
                 <property name="action-name">win.fixed_dice::6</property>
               </object>
