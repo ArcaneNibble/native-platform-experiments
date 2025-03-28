@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-dice\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-28 00:25+0000\n"
+"POT-Creation-Date: 2025-03-28 00:43+0000\n"
 "PO-Revision-Date: 2025-03-28 00:15+0000\n"
 "Last-Translator: ArcaneNibble\n"
 "Language-Team: none\n"
@@ -78,6 +78,10 @@ msgctxt "shortcut window"
 msgid "Roll a custom dice"
 msgstr "定面骰子"
 
+#: src/gnome-dice-application.c:67
+msgid "Demo Dice"
+msgstr "演示骰子APP"
+
 #: src/gnome-dice-window.ui:18
 msgid "Change Dice Type"
 msgstr "改變骰子多少面"
@@ -121,6 +125,11 @@ msgstr ""
 #: src/gnome-dice-window.ui:88
 msgid "_Custom..."
 msgstr "定制..."
+
+#: src/custom-dice-dialog.ui:6
+#, fuzzy
+msgid "Set Custom Dice"
+msgstr "定面骰子"
 
 #: src/custom-dice-dialog.ui:21
 msgid "OK"

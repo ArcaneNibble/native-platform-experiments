@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="Adw" version="1.0"/>
   <template class="CustomDiceDialog" parent="AdwDialog">
-    <property name="title">Set Custom Dice</property>
+    <property name="title" translatable="yes">Set Custom Dice</property>
     <property name="follows-content-size">False</property>
     <property name="default-widget">okay_button</property>
     <property name="child">

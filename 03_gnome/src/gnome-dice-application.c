@@ -1,6 +1,8 @@
 
 #include "config.h"
 
+#include <glib/gi18n.h>
+
 #include "gnome-dice-application.h"
 #include "gnome-dice-window.h"
 
@@ -62,7 +64,7 @@ gnome_dice_application_about_action (GSimpleAction *action,
 	window = gtk_application_get_active_window (GTK_APPLICATION (self));
 
 	adw_show_about_dialog (GTK_WIDGET (window),
-	                       "application-name", "Demo Dice",
+	                       "application-name", _("Demo Dice"),
 	                       "application-icon", "com.arcanenibble.Dice",
 	                       "developer-name", "ArcaneNibble",
 	                       "version", "0.1.0",

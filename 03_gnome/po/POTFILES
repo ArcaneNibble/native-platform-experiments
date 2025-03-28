@@ -3,6 +3,7 @@ data/com.arcanenibble.Dice.metainfo.xml.in
 data/com.arcanenibble.Dice.gschema.xml
 src/gtk/help-overlay.ui
 src/main.c
+src/gnome-dice-application.c
 src/gnome-dice-window.c
 src/gnome-dice-window.ui
 src/custom-dice-dialog.c
