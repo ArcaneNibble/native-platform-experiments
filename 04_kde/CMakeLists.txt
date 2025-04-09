@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(demo-dice)
+project(kde-dice)
 
 find_package(ECM 6.0.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})

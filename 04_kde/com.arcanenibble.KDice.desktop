@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=ArcaneNibble Demo Dice
 Name[zh]=ArcaneNibble的演示骰子APP
-Exec=demo-dice
+Exec=kde-dice
 Icon=kde
 Type=Application
 Terminal=false

@@ -1,22 +1,22 @@
-add_executable(demo-dice)
+add_executable(kde-dice)
 
-ecm_add_qml_module(demo-dice
+ecm_add_qml_module(kde-dice
     URI
     com.arcanenibble.KDice
 )
 
-target_sources(demo-dice
+target_sources(kde-dice
     PRIVATE
     main.cpp
     backend.cpp
 )
 
-ecm_target_qml_sources(demo-dice
+ecm_target_qml_sources(kde-dice
     SOURCES
     Main.qml
 )
 
-target_link_libraries(demo-dice
+target_link_libraries(kde-dice
     PRIVATE
     Qt6::Quick
     Qt6::Qml
@@ -29,4 +29,4 @@ target_link_libraries(demo-dice
     KF6::ConfigCore
 )
 
-install(TARGETS demo-dice ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS kde-dice ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

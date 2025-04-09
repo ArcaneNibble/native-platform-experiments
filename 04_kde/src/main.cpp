@@ -28,14 +28,14 @@ int main(int argc, char *argv[])
     }
 
     KAboutData aboutData(
-        QStringLiteral("demo-dice"),
+        QStringLiteral("kde-dice"),
         i18nc("@title", "Demo Dice"),
         QStringLiteral("1.0"),
         i18n("Demo KDE dice app"),
         KAboutLicense::Unknown,
         i18n("© 2025 ArcaneNibble"));
     aboutData.setLicenseText(i18n("0BSD"));
-    aboutData.setBugAddress("rqou00@gmail.com");
+    aboutData.setBugAddress("mailto:rqou00@gmail.com");
     aboutData.setOrganizationDomain("arcanenibble.com");
     aboutData.setDesktopFileName(QStringLiteral("com.arcanenibble.KDice"));
     aboutData.addAuthor(
