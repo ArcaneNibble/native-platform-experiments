@@ -24,7 +24,7 @@ msgstr "定面骰子"
 
 #: build/bin/com/arcanenibble/KDice/Main.qml src/Main.qml
 msgid "Dice Type"
-msgstr ""
+msgstr "骰子面"
 
 #: build/bin/com/arcanenibble/KDice/Main.qml src/Main.qml
 msgid "D4"
@@ -52,15 +52,15 @@ msgstr ""
 
 #: build/bin/com/arcanenibble/KDice/Main.qml src/Main.qml
 msgid "Custom..."
-msgstr ""
+msgstr "定制..."
 
 #: build/bin/com/arcanenibble/KDice/Main.qml src/Main.qml
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #: build/bin/com/arcanenibble/KDice/Main.qml src/Main.qml
 msgid "About"
-msgstr ""
+msgstr "关于"
 
 #: build/bin/com/arcanenibble/KDice/Main.qml src/Main.qml
 msgctxt "@title:window"
@@ -69,16 +69,16 @@ msgstr ""
 
 #: build/bin/com/arcanenibble/KDice/Main.qml src/Main.qml
 msgid "Roll!"
-msgstr ""
+msgstr "掷！"
 
 #: src/main.cpp
 msgctxt "@title"
 msgid "Demo Dice"
-msgstr ""
+msgstr "演示骰子APP"
 
 #: src/main.cpp
 msgid "Demo KDE dice app"
-msgstr ""
+msgstr "演示KDE骰子APP"
 
 #: src/main.cpp
 msgid "© 2025 ArcaneNibble"
@@ -96,4 +96,4 @@ msgstr ""
 #: src/main.cpp
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr ""
+msgstr "开发人员"
