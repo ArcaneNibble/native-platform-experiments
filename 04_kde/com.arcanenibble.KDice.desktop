@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kirigami Tutorial
+Name[zh_TW]=Kirigami 教學
+Exec=demo-dice
+Icon=kde
+Type=Application
+Terminal=false
+Categories=KDE;Game
