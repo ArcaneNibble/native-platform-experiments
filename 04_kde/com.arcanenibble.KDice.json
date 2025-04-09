@@ -1,0 +1,24 @@
+{
+   "command": "kde-dice",
+   "finish-args": [
+      "--share=ipc",
+      "--socket=fallback-x11",
+      "--socket=wayland"
+   ],
+   "id": "com.arcanenibble.KDice",
+   "modules": [
+      {
+         "buildsystem": "cmake-ninja",
+         "name": "kde-dice",
+         "sources": [
+            {
+                "type" : "dir",
+                "path" : "."
+            }
+         ]
+      }
+   ],
+   "runtime": "org.kde.Platform",
+   "runtime-version": "6.8",
+   "sdk": "org.kde.Sdk"
+}
