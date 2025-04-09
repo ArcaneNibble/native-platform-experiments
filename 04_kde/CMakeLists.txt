@@ -31,6 +31,7 @@ find_package(KF6 REQUIRED COMPONENTS
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 
 add_subdirectory(src)
+add_subdirectory(po)
 
 install(PROGRAMS com.arcanenibble.KDice.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 

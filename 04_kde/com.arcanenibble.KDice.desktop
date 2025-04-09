@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Kirigami Tutorial
-Name[zh_TW]=Kirigami 教學
+Name=ArcaneNibble Demo Dice
+Name[zh]=ArcaneNibble的演示骰子APP
 Exec=demo-dice
 Icon=kde
 Type=Application

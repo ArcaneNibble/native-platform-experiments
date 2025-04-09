@@ -114,7 +114,7 @@ Kirigami.ApplicationWindow {
         d10.checked = n == 10;
         d12.checked = n == 12;
         d20.checked = n == 20;
-        root.title = i18nc("@title:window", "D%0").arg(n);
+        root.title = i18nc("@title:window", "D%1", n);
         Backend.maxRoll = n;
     }
 

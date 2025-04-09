@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
     KIconTheme::initTheme();
     QApplication app(argc, argv);
-    KLocalizedString::setApplicationDomain("demo-dice");
+    KLocalizedString::setApplicationDomain("kde-dice");
     QApplication::setOrganizationName(QStringLiteral("ArcaneNibble"));
     QApplication::setOrganizationDomain(QStringLiteral("arcanenibble.com"));
     QApplication::setApplicationName(QStringLiteral("Demo Dice"));
