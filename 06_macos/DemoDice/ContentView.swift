@@ -89,6 +89,9 @@ struct DiceView: View {
             .buttonStyle(.plain)
         }
         .padding()
+        #if os(macOS)
+        .navigationTitle("Demo Dice - D\(maxDiceRoll)")
+        #endif
     }
 }
 struct DiceView_Previews: PreviewProvider {
@@ -118,6 +121,7 @@ struct CustomDiceView: View {
             }
         }
         .padding()
+        .navigationTitle("Set custom dice")
     }
 }
 struct CustomDiceView_Previews: PreviewProvider {
