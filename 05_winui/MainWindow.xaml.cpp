@@ -37,7 +37,7 @@ namespace winrt::DemoDice::implementation
     hstring MainWindow::AppTitle() const
     {
         std::wostringstream s;
-        s << L"Demo Dice - D" << m_maxRoll;
+        s << m_resx.GetString(L"WinTitle/Before") << m_maxRoll << m_resx.GetString(L"WinTitle/After");
         return hstring(s.str());
     }
     bool MainWindow::IsDice4() const

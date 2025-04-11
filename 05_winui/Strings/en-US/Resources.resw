@@ -186,4 +186,16 @@
   <data name="CustomDialog.Label" xml:space="preserve">
     <value>Number of sides</value>
   </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>ArcaneNibble Demo Dice</value>
+  </data>
+  <data name="AppDisplayDesc" xml:space="preserve">
+    <value>WinUI3 Demo Dice App</value>
+  </data>
+  <data name="WinTitle.Before" xml:space="preserve">
+    <value>Demo Dice - D</value>
+  </data>
+  <data name="WinTitle.After" xml:space="preserve">
+    <value />
+  </data>
 </root>
