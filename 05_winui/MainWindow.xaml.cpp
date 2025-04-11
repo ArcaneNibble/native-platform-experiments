@@ -4,6 +4,8 @@
 #include "MainWindow.g.cpp"
 #endif
 
+#include <sstream>
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 using namespace Windows::Foundation;
@@ -15,7 +17,56 @@ namespace winrt::DemoDice::implementation
     {
         MainWindowT::InitializeComponent();
         AppWindow().Resize({ 800, 800 });
-        updateMenuRadios();
+    }
+
+    winrt::event_token MainWindow::PropertyChanged(Data::PropertyChangedEventHandler const& handler)
+    {
+        return m_propertyChanged.add(handler);
+    }
+    void MainWindow::PropertyChanged(winrt::event_token const& token)
+    {
+        m_propertyChanged.remove(token);
+    }
+
+    hstring MainWindow::AppTitle() const
+    {
+        std::wostringstream s;
+        s << L"Demo Dice - D" << m_maxRoll;
+        return hstring(s.str());
+    }
+    bool MainWindow::IsDice4() const
+    {
+        return m_maxRoll == 4;
+    }
+    bool MainWindow::IsDice6() const
+    {
+        return m_maxRoll == 6;
+    }
+    bool MainWindow::IsDice8() const
+    {
+        return m_maxRoll == 8;
+    }
+    bool MainWindow::IsDice10() const
+    {
+        return m_maxRoll == 10;
+    }
+    bool MainWindow::IsDice12() const
+    {
+        return m_maxRoll == 12;
+    }
+    bool MainWindow::IsDice20() const
+    {
+        return m_maxRoll == 20;
+    }
+    bool MainWindow::IsDiceCustom() const
+    {
+        if (m_maxRoll == 4) return false;
+        if (m_maxRoll == 6) return false;
+        if (m_maxRoll == 8) return false;
+        if (m_maxRoll == 10) return false;
+        if (m_maxRoll == 12) return false;
+        if (m_maxRoll == 20) return false;
+        return true;
     }
 
     void MainWindow::rollButton_Click(IInspectable const&, RoutedEventArgs const&)
@@ -36,7 +87,7 @@ namespace winrt::DemoDice::implementation
         auto btn = unbox_value<FrameworkElement>(sender);
         auto tag = unbox_value<hstring>(btn.Tag());
         m_maxRoll = wcstol(tag.c_str(), nullptr, 10);
-        updateMenuRadios();
+        updateUI();
     }
 
     IAsyncAction MainWindow::setCustomMaxRoll_Click(IInspectable const&, RoutedEventArgs const&)
@@ -65,25 +116,19 @@ namespace winrt::DemoDice::implementation
             }
         }
 
-        updateMenuRadios();
+        updateUI();
     }
 
-    void MainWindow::updateMenuRadios()
+    void MainWindow::updateUI()
     {
-        bool custom = true;
-        menuD4().IsChecked(m_maxRoll == 4);
-        if (m_maxRoll == 4) custom = false;
-        menuD6().IsChecked(m_maxRoll == 6);
-        if (m_maxRoll == 6) custom = false;
-        menuD8().IsChecked(m_maxRoll == 8);
-        if (m_maxRoll == 8) custom = false;
-        menuD10().IsChecked(m_maxRoll == 10);
-        if (m_maxRoll == 10) custom = false;
-        menuD12().IsChecked(m_maxRoll == 12);
-        if (m_maxRoll == 12) custom = false;
-        menuD20().IsChecked(m_maxRoll == 20);
-        if (m_maxRoll == 20) custom = false;
-        menuCustom().IsChecked(custom);
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"AppTitle" });
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice4" });
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice6" });
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice8" });
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice10" });
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice12" });
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice20" });
+        m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDiceCustom" });
     }
 
     void MainWindow::exit_Click(IInspectable const&, RoutedEventArgs const&)

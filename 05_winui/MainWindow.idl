@@ -1,8 +1,16 @@
 namespace DemoDice
 {
     [default_interface]
-    runtimeclass MainWindow : Microsoft.UI.Xaml.Window
+    runtimeclass MainWindow : Microsoft.UI.Xaml.Window, Microsoft.UI.Xaml.Data.INotifyPropertyChanged
     {
         MainWindow();
+        String AppTitle{ get; };
+        Boolean IsDice4{ get; };
+        Boolean IsDice6{ get; };
+        Boolean IsDice8{ get; };
+        Boolean IsDice10{ get; };
+        Boolean IsDice12{ get; };
+        Boolean IsDice20{ get; };
+        Boolean IsDiceCustom{ get; };
     }
 }
