@@ -23,50 +23,50 @@
         </Grid.ColumnDefinitions>
 
         <MenuBar Grid.Row="0" Grid.ColumnSpan="1000">
-            <MenuBarItem Title="Dice" AccessKey="D">
-                <RadioMenuFlyoutItem Text="D4" AccessKey="4" Tag="4"
+            <MenuBarItem x:Uid="DiceMenu">
+                <RadioMenuFlyoutItem x:Uid="D4" Tag="4"
                                      Click="setFixedMaxRoll_Click"
                                      IsChecked="{x:Bind IsDice4, Mode=OneWay}">
                     <RadioMenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator Modifiers="Control" Key="Number1"/>
                     </RadioMenuFlyoutItem.KeyboardAccelerators>
                 </RadioMenuFlyoutItem>
-                <RadioMenuFlyoutItem Text="D6" AccessKey="6" Tag="6"
+                <RadioMenuFlyoutItem x:Uid="D6" Tag="6"
                                      Click="setFixedMaxRoll_Click"
                                      IsChecked="{x:Bind IsDice6, Mode=OneWay}">
                     <RadioMenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator Modifiers="Control" Key="Number2"/>
                     </RadioMenuFlyoutItem.KeyboardAccelerators>
                 </RadioMenuFlyoutItem>
-                <RadioMenuFlyoutItem Text="D8" AccessKey="8" Tag="8"
+                <RadioMenuFlyoutItem x:Uid="D8" Tag="8"
                                      Click="setFixedMaxRoll_Click"
                                      IsChecked="{x:Bind IsDice8, Mode=OneWay}">
                     <RadioMenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator Modifiers="Control" Key="Number3"/>
                     </RadioMenuFlyoutItem.KeyboardAccelerators>
                 </RadioMenuFlyoutItem>
-                <RadioMenuFlyoutItem Text="D10" AccessKey="1" Tag="10"
+                <RadioMenuFlyoutItem x:Uid="D10" Tag="10"
                                      Click="setFixedMaxRoll_Click"
                                      IsChecked="{x:Bind IsDice10, Mode=OneWay}">
                     <RadioMenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator Modifiers="Control" Key="Number4"/>
                     </RadioMenuFlyoutItem.KeyboardAccelerators>
                 </RadioMenuFlyoutItem>
-                <RadioMenuFlyoutItem Text="D12" AccessKey="D" Tag="12" 
+                <RadioMenuFlyoutItem x:Uid="D12" Tag="12"
                                      Click="setFixedMaxRoll_Click"
                                      IsChecked="{x:Bind IsDice12, Mode=OneWay}">
                     <RadioMenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator Modifiers="Control" Key="Number5"/>
                     </RadioMenuFlyoutItem.KeyboardAccelerators>
                 </RadioMenuFlyoutItem>
-                <RadioMenuFlyoutItem Text="D20" AccessKey="2" Tag="20"
+                <RadioMenuFlyoutItem x:Uid="D20" Tag="20"
                                      Click="setFixedMaxRoll_Click"
                                      IsChecked="{x:Bind IsDice20, Mode=OneWay}">
                     <RadioMenuFlyoutItem.KeyboardAccelerators>
                         <KeyboardAccelerator Modifiers="Control" Key="Number6"/>
                     </RadioMenuFlyoutItem.KeyboardAccelerators>
                 </RadioMenuFlyoutItem>
-                <RadioMenuFlyoutItem Text="Custom..." AccessKey="C"
+                <RadioMenuFlyoutItem x:Uid="CustomMenu"
                                      Click="setCustomMaxRoll_Click"
                                      IsChecked="{x:Bind IsDiceCustom, Mode=OneWay}">
                     <RadioMenuFlyoutItem.KeyboardAccelerators>
@@ -74,14 +74,15 @@
                     </RadioMenuFlyoutItem.KeyboardAccelerators>
                 </RadioMenuFlyoutItem>
                 <MenuFlyoutSeparator/>
-                <MenuFlyoutItem Text="Exit" AccessKey="X" Click="exit_Click"/>
+                <MenuFlyoutItem x:Uid="ExitMenu" Click="exit_Click"/>
             </MenuBarItem>
         </MenuBar>
 
         <Button
             x:Name="rollButton"
+            x:Uid="RollButton"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
             Grid.Row="2" Grid.Column="1"
-            Click="rollButton_Click">Roll!</Button>
+            Click="rollButton_Click"/>
     </Grid>
 </Window>
