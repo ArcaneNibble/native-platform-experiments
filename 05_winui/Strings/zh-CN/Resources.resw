@@ -172,16 +172,16 @@
     <value>X</value>
   </data>
   <data name="ExitMenu.Text" xml:space="preserve">
-    <value>Exit</value>
+    <value>关闭</value>
   </data>
   <data name="CustomDialog.Title" xml:space="preserve">
     <value>定面骰子</value>
   </data>
   <data name="CustomDialog.OK" xml:space="preserve">
-    <value>OK</value>
+    <value>确定</value>
   </data>
   <data name="CustomDialog.Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="CustomDialog.Label" xml:space="preserve">
     <value>多少面</value>
