@@ -84,7 +84,7 @@ struct DiceView: View {
             } label: {
                 Text(currentDiceRoll == -1 ? "Roll!" : String(currentDiceRoll))
                     .font(.largeTitle)
-                    .frame(width: 200, height: 200)
+                    .frame(width: 300, height: 300)
                     .foregroundColor(.white)
                     .background(.gray)
                     .cornerRadius(8)
@@ -122,7 +122,7 @@ struct CustomDiceView: View {
                 in: 1...Int.max
             ) {
                 Text("Max roll: \(maxDiceRoll)")
-                    .frame(width: 200)
+                    .frame(width: 300)
             }
         }
         .padding()
@@ -154,6 +154,7 @@ struct ContentView: View {
             if !(showCustom) {
                 DiceView(maxDiceRoll: $maxDiceRoll, showCustom: $showCustom)
                     .transition(.move(edge: .trailing))
+                    .zIndex(-1)
             } else {
                 CustomDiceView(maxDiceRoll: $maxDiceRoll, showCustom: $showCustom)
                     .transition(.move(edge: .trailing))
