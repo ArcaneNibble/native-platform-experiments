@@ -9,7 +9,7 @@ struct DiceView: View {
             Button {
                 currentDiceRoll = Int.random(in: 1...maxDiceRoll)
             } label: {
-                Text(currentDiceRoll == -1 ? "Roll!" : String(currentDiceRoll))
+                Text(LocalizedStringKey(currentDiceRoll == -1 ? "Roll!" : String(currentDiceRoll)))
                     .font(.largeTitle)
                     .frame(width: 300, height: 300)
                     .foregroundColor(.white)
@@ -20,7 +20,7 @@ struct DiceView: View {
         }
         .padding()
         #if os(macOS)
-        .navigationTitle("Demo Dice - D\(maxDiceRoll)")
+        .navigationTitle("Demo Dice - D\(Int64(maxDiceRoll))")
         #endif
     }
 }
