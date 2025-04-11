@@ -1,17 +1,15 @@
-//
-//  DemoDiceApp.swift
-//  DemoDice
-//
-//  Created by R on 4/11/25.
-//
-
 import SwiftUI
 
 @main
 struct DemoDiceApp: App {
+    @State private var maxDiceRoll: Int = 20
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(maxDiceRoll: $maxDiceRoll)
+        }
+        .commands {
+            MenuCommands(maxDiceRoll: $maxDiceRoll)
         }
     }
 }
