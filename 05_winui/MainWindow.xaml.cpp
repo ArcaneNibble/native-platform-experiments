@@ -18,6 +18,8 @@ namespace winrt::DemoDice::implementation
         MainWindowT::InitializeComponent();
         AppWindow().Resize({ 800, 800 });
 
+        m_resx = Microsoft::Windows::ApplicationModel::Resources::ResourceLoader();
+
         auto settings = Windows::Storage::ApplicationData::Current().LocalSettings().Values();
         auto dice = settings.TryLookup(L"dice");
         m_maxRoll = unbox_value_or(dice, 20u);
@@ -98,13 +100,13 @@ namespace winrt::DemoDice::implementation
     {
         auto dlg = Controls::ContentDialog();
         dlg.XamlRoot(root().XamlRoot());
-        dlg.Title(box_value(L"Set Custom Dice"));
-        dlg.PrimaryButtonText(L"OK");
-        dlg.CloseButtonText(L"Cancel");
+        dlg.Title(box_value(m_resx.GetString(L"CustomDialog/Title")));
+        dlg.PrimaryButtonText(m_resx.GetString(L"CustomDialog/OK"));
+        dlg.CloseButtonText(m_resx.GetString(L"CustomDialog/Cancel"));
         dlg.DefaultButton(Controls::ContentDialogButton::Primary);
 
         auto box = Controls::NumberBox();
-        box.Header(box_value(L"Number of sides"));
+        box.Header(box_value(m_resx.GetString(L"CustomDialog/Label")));
         box.PlaceholderText(L"20");
         box.Value(m_maxRoll);
         box.SpinButtonPlacementMode(Controls::NumberBoxSpinButtonPlacementMode::Inline);

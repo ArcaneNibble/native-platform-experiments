@@ -33,6 +33,7 @@ namespace winrt::DemoDice::implementation
     private:
         uint32_t m_maxRoll;
         winrt::event<Microsoft::UI::Xaml::Data::PropertyChangedEventHandler> m_propertyChanged;
+        Microsoft::Windows::ApplicationModel::Resources::ResourceLoader m_resx;
 
         void updateUI();
     };

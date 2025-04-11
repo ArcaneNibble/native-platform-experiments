@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DiceMenu.AccessKey" xml:space="preserve">
-    <value>D</value>
+    <value>T</value>
   </data>
   <data name="DiceMenu.Title" xml:space="preserve">
-    <value>Dice</value>
+    <value>骰子</value>
   </data>
   <data name="RollButton.Content" xml:space="preserve">
-    <value>Roll!</value>
+    <value>掷！</value>
   </data>
   <data name="D4.AccessKey" xml:space="preserve">
     <value>4</value>
@@ -166,7 +166,7 @@
     <value>C</value>
   </data>
   <data name="CustomMenu.Text" xml:space="preserve">
-    <value>Custom...</value>
+    <value>定制...</value>
   </data>
   <data name="ExitMenu.AccessKey" xml:space="preserve">
     <value>X</value>
@@ -175,7 +175,7 @@
     <value>Exit</value>
   </data>
   <data name="CustomDialog.Title" xml:space="preserve">
-    <value>Set Custom Dice</value>
+    <value>定面骰子</value>
   </data>
   <data name="CustomDialog.OK" xml:space="preserve">
     <value>OK</value>
@@ -184,6 +184,6 @@
     <value>Cancel</value>
   </data>
   <data name="CustomDialog.Label" xml:space="preserve">
-    <value>Number of sides</value>
+    <value>多少面</value>
   </data>
 </root>
