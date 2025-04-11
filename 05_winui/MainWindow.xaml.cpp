@@ -17,6 +17,10 @@ namespace winrt::DemoDice::implementation
     {
         MainWindowT::InitializeComponent();
         AppWindow().Resize({ 800, 800 });
+
+        auto settings = Windows::Storage::ApplicationData::Current().LocalSettings().Values();
+        auto dice = settings.TryLookup(L"dice");
+        m_maxRoll = unbox_value_or(dice, 20u);
     }
 
     winrt::event_token MainWindow::PropertyChanged(Data::PropertyChangedEventHandler const& handler)
@@ -121,6 +125,9 @@ namespace winrt::DemoDice::implementation
 
     void MainWindow::updateUI()
     {
+        auto settings = Windows::Storage::ApplicationData::Current().LocalSettings().Values();
+        settings.Insert(L"dice", box_value(m_maxRoll));
+
         m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"AppTitle" });
         m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice4" });
         m_propertyChanged(*this, Data::PropertyChangedEventArgs{ L"IsDice6" });
