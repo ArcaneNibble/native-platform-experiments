@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MenuCommands: Commands {
     @Binding var maxDiceRoll: Int
+    @Binding var showCustom: Bool
     
     private var isD4: Binding<Bool> {
         Binding(
@@ -40,6 +41,24 @@ struct MenuCommands: Commands {
         )
     }
     
+    private var isCustom: Binding<Bool> {
+        Binding(
+            get: {
+                if maxDiceRoll == 4 { return false }
+                if maxDiceRoll == 6 { return false }
+                if maxDiceRoll == 8 { return false }
+                if maxDiceRoll == 10 { return false }
+                if maxDiceRoll == 12 { return false }
+                if maxDiceRoll == 20 { return false }
+                return true
+            }, set: {_ in
+                withAnimation(.easeOut(duration: 0.3)) {
+                    showCustom = true
+                }
+            }
+        )
+    }
+    
     var body: some Commands {
         CommandMenu("Dice") {
             Toggle("D4", isOn: isD4).keyboardShortcut("1", modifiers: .command)
@@ -48,13 +67,15 @@ struct MenuCommands: Commands {
             Toggle("D10", isOn: isD10).keyboardShortcut("4", modifiers: .command)
             Toggle("D12", isOn: isD12).keyboardShortcut("5", modifiers: .command)
             Toggle("D20", isOn: isD20).keyboardShortcut("6", modifiers: .command)
+            Toggle("Custom...", isOn: isCustom).keyboardShortcut("7", modifiers: .command)
         }
     }
 }
 
-struct ContentView: View {
+struct DiceView: View {
     @State private var currentDiceRoll: Int = -1
     @Binding var maxDiceRoll: Int
+    @Binding var showCustom: Bool
     
     var body: some View {
         VStack {
@@ -63,7 +84,7 @@ struct ContentView: View {
             } label: {
                 Text(currentDiceRoll == -1 ? "Roll!" : String(currentDiceRoll))
                     .font(.largeTitle)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 200, height: 200)
                     .foregroundColor(.white)
                     .background(.gray)
                     .cornerRadius(8)
@@ -71,11 +92,78 @@ struct ContentView: View {
             .buttonStyle(.plain)
         }
         .padding()
+        .toolbar {
+            ToolbarItem{
+                Button(action: {
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        showCustom = true
+                    }
+                }, label: {
+                    Label("Customize", systemImage: "gear")
+                })
+            }
+        }
+    }
+}
+struct DiceView_Previews: PreviewProvider {
+    static var previews: some View {
+        DiceView(maxDiceRoll: .constant(20), showCustom: .constant(false))
     }
 }
 
+struct CustomDiceView: View {
+    @Binding var maxDiceRoll: Int
+    @Binding var showCustom: Bool
+
+    var body: some View {
+        Form {
+            Stepper(
+                value: $maxDiceRoll,
+                in: 1...Int.max
+            ) {
+                Text("Max roll: \(maxDiceRoll)")
+                    .frame(width: 200)
+            }
+        }
+        .padding()
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button(action: {
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        showCustom = false
+                    }
+                }, label: {
+                    Label("back", systemImage: "chevron.left")
+                })
+            }
+        }
+    }
+}
+struct CustomDiceView_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomDiceView(maxDiceRoll: .constant(20), showCustom: .constant(false))
+    }
+}
+
+struct ContentView: View {
+    @Binding var maxDiceRoll: Int
+    @Binding var showCustom: Bool
+
+    var body: some View {
+        HStack {
+            if !(showCustom) {
+                DiceView(maxDiceRoll: $maxDiceRoll, showCustom: $showCustom)
+                    .transition(.move(edge: .trailing))
+            } else {
+                CustomDiceView(maxDiceRoll: $maxDiceRoll, showCustom: $showCustom)
+                    .transition(.move(edge: .trailing))
+            }
+        }
+    }
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(maxDiceRoll: .constant(20))
+        ContentView(maxDiceRoll: .constant(20), showCustom: .constant(false))
+        ContentView(maxDiceRoll: .constant(20), showCustom: .constant(true))
     }
 }
