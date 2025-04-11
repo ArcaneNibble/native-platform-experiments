@@ -72,6 +72,10 @@ struct MenuCommands: Commands {
     }
 }
 
+// Lots of logic stolen from https://medium.com/better-programming/stack-navigation-on-macos-41a40d8ec3a4
+
+
+
 struct DiceView: View {
     @State private var currentDiceRoll: Int = -1
     @Binding var maxDiceRoll: Int
