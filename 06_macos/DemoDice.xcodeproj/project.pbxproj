@@ -11,6 +11,8 @@
 		215A4A172DA9550C00C163A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A4A162DA9550C00C163A1 /* ContentView.swift */; };
 		215A4A192DA9550D00C163A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 215A4A182DA9550D00C163A1 /* Assets.xcassets */; };
 		215A4A1D2DA9550D00C163A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 215A4A1C2DA9550D00C163A1 /* Preview Assets.xcassets */; };
+		21E78C892DA9A80E00C6A09D /* MacStackNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E78C882DA9A80E00C6A09D /* MacStackNavigation.swift */; };
+		21E78C8B2DA9A83F00C6A09D /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E78C8A2DA9A83F00C6A09D /* MenuCommands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		215A4A182DA9550D00C163A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		215A4A1A2DA9550D00C163A1 /* DemoDice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DemoDice.entitlements; sourceTree = "<group>"; };
 		215A4A1C2DA9550D00C163A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		21E78C882DA9A80E00C6A09D /* MacStackNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacStackNavigation.swift; sourceTree = "<group>"; };
+		21E78C8A2DA9A83F00C6A09D /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			children = (
 				215A4A142DA9550C00C163A1 /* DemoDiceApp.swift */,
 				215A4A162DA9550C00C163A1 /* ContentView.swift */,
+				21E78C8A2DA9A83F00C6A09D /* MenuCommands.swift */,
+				21E78C882DA9A80E00C6A09D /* MacStackNavigation.swift */,
 				215A4A182DA9550D00C163A1 /* Assets.xcassets */,
 				215A4A1A2DA9550D00C163A1 /* DemoDice.entitlements */,
 				215A4A1B2DA9550D00C163A1 /* Preview Content */,
@@ -139,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E78C8B2DA9A83F00C6A09D /* MenuCommands.swift in Sources */,
+				21E78C892DA9A80E00C6A09D /* MacStackNavigation.swift in Sources */,
 				215A4A172DA9550C00C163A1 /* ContentView.swift in Sources */,
 				215A4A152DA9550C00C163A1 /* DemoDiceApp.swift in Sources */,
 			);
