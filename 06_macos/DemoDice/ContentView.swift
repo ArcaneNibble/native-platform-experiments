@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MenuCommands: Commands {
     @Binding var maxDiceRoll: Int
-    @Binding var showCustom: Bool
+    var showCustomDiceView: () -> ()
     
     private var isD4: Binding<Bool> {
         Binding(
@@ -52,9 +52,7 @@ struct MenuCommands: Commands {
                 if maxDiceRoll == 20 { return false }
                 return true
             }, set: {_ in
-                withAnimation(.easeOut(duration: 0.3)) {
-                    showCustom = true
-                }
+                showCustomDiceView()
             }
         )
     }
@@ -72,14 +70,9 @@ struct MenuCommands: Commands {
     }
 }
 
-// Lots of logic stolen from https://medium.com/better-programming/stack-navigation-on-macos-41a40d8ec3a4
-
-
-
 struct DiceView: View {
     @State private var currentDiceRoll: Int = -1
     @Binding var maxDiceRoll: Int
-    @Binding var showCustom: Bool
     
     var body: some View {
         VStack {
@@ -96,79 +89,89 @@ struct DiceView: View {
             .buttonStyle(.plain)
         }
         .padding()
-        .toolbar {
-            ToolbarItem{
-                Button(action: {
-                    withAnimation(.easeOut(duration: 0.3)) {
-                        showCustom = true
-                    }
-                }, label: {
-                    Label("Customize", systemImage: "gear")
-                })
-            }
-        }
     }
 }
 struct DiceView_Previews: PreviewProvider {
     static var previews: some View {
-        DiceView(maxDiceRoll: .constant(20), showCustom: .constant(false))
+        DiceView(maxDiceRoll: .constant(20))
     }
 }
 
 struct CustomDiceView: View {
     @Binding var maxDiceRoll: Int
-    @Binding var showCustom: Bool
 
     var body: some View {
         Form {
-            Stepper(
-                value: $maxDiceRoll,
-                in: 1...Int.max
-            ) {
-                Text("Max roll: \(maxDiceRoll)")
-                    .frame(width: 300)
+            Section(header: Text("Max dice roll")) {
+                HStack {
+                    TextField("",
+                              value: $maxDiceRoll,
+                              formatter: NumberFormatter())
+                    #if os(iOS)
+                    .keyboardType(.decimalPad)
+                    #endif
+                    Stepper("",
+                            value: $maxDiceRoll,
+                            in: 1...Int.max)
+                    .labelsHidden()
+                }
             }
         }
         .padding()
+    }
+}
+struct CustomDiceView_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomDiceView(maxDiceRoll: .constant(20))
+    }
+}
+
+// Steal this stack navigation https://medium.com/better-programming/stack-navigation-on-macos-41a40d8ec3a4
+struct StackNavigationView<RootContent, SubContent>: View where RootContent: View, SubContent: View {
+    @Binding var showingSubview: Bool
+    let rootView: () -> RootContent
+    let subView: () -> SubContent
+    
+    init(
+        showingSubview: Binding<Bool>,
+        @ViewBuilder rootView: @escaping () -> RootContent,
+        @ViewBuilder subView: @escaping () -> SubContent) {
+        self._showingSubview = showingSubview
+        self.rootView = rootView
+        self.subView = subView
+    }
+    
+    var body: some View {
+        VStack {
+            if !showingSubview {
+                rootView()
+            } else {
+                StackNavigationSubview(isVisible: $showingSubview) {
+                    subView()
+                }
+                .transition(.move(edge: .trailing))
+            }
+        }
+    }
+}
+private struct StackNavigationSubview<Content>: View where Content: View {
+    @Binding var isVisible: Bool
+    let contentView: () -> Content
+    
+    var body: some View {
+        VStack {
+            contentView()
+        }
         .toolbar {
             ToolbarItem(placement: .navigation) {
                 Button(action: {
                     withAnimation(.easeOut(duration: 0.3)) {
-                        showCustom = false
+                        isVisible = false
                     }
                 }, label: {
                     Label("back", systemImage: "chevron.left")
                 })
             }
         }
-    }
-}
-struct CustomDiceView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomDiceView(maxDiceRoll: .constant(20), showCustom: .constant(false))
-    }
-}
-
-struct ContentView: View {
-    @Binding var maxDiceRoll: Int
-    @Binding var showCustom: Bool
-
-    var body: some View {
-        HStack {
-            if !(showCustom) {
-                DiceView(maxDiceRoll: $maxDiceRoll, showCustom: $showCustom)
-                    .transition(.move(edge: .trailing))
-                    .zIndex(-1)
-            } else {
-                CustomDiceView(maxDiceRoll: $maxDiceRoll, showCustom: $showCustom)
-                    .transition(.move(edge: .trailing))
-            }
-        }
-    }
-}
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(maxDiceRoll: .constant(20), showCustom: .constant(false))
-        ContentView(maxDiceRoll: .constant(20), showCustom: .constant(true))
     }
 }
