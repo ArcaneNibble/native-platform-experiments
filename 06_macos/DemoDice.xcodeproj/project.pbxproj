@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		215A4A112DA9550C00C163A1 /* DemoDice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoDice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		215A4A112DA9550C00C163A1 /* Demo Dice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo Dice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		215A4A142DA9550C00C163A1 /* DemoDiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDiceApp.swift; sourceTree = "<group>"; };
 		215A4A162DA9550C00C163A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		215A4A182DA9550D00C163A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		215A4A122DA9550C00C163A1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				215A4A112DA9550C00C163A1 /* DemoDice.app */,
+				215A4A112DA9550C00C163A1 /* Demo Dice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,7 +96,7 @@
 			);
 			name = DemoDice;
 			productName = DemoDice;
-			productReference = 215A4A112DA9550C00C163A1 /* DemoDice.app */;
+			productReference = 215A4A112DA9550C00C163A1 /* Demo Dice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -309,7 +309,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arcanenibble.DemoDice;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Demo Dice";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -345,7 +345,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arcanenibble.DemoDice;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Demo Dice";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
