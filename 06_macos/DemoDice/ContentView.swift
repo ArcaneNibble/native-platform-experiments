@@ -30,6 +30,29 @@ struct DiceView_Previews: PreviewProvider {
     }
 }
 
+// https://stackoverflow.com/questions/72636810/swiftui-numeric-textfield-maximum-and-minimum-values
+class CustomRangeFormatter : Formatter {
+    override func string(for obj: Any?) -> String? {
+        guard let number = obj as? Int else {
+            return nil
+        }
+        return String(number)
+    }
+    override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+
+        guard var number = Int(string) else {
+            return false
+        }
+        
+        if number < 1 {
+            number = 1
+        }
+        obj?.pointee = number as AnyObject
+        
+        return true
+    }
+}
+
 struct CustomDiceView: View {
     @Binding var maxDiceRoll: Int
 
@@ -39,7 +62,7 @@ struct CustomDiceView: View {
                 HStack {
                     TextField("",
                               value: $maxDiceRoll,
-                              formatter: NumberFormatter())
+                              formatter: CustomRangeFormatter())
                     #if os(iOS)
                     .keyboardType(.decimalPad)
                     #endif
