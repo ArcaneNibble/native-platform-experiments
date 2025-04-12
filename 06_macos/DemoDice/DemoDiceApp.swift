@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct DemoDiceApp: App {
-    @State private var maxDiceRoll: Int = 20
+    @AppStorage("maxDiceRoll") private var maxDiceRoll: Int = 20
     @State private var showingCustomDice = false
     
     private func showCustomDice() {
