@@ -1,6 +1,6 @@
 package com.arcanenibble.demodice
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -45,24 +45,55 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
 import com.arcanenibble.demodice.ui.theme.DemoDiceTheme
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.runBlocking
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings");
+val MAX_ROLL_KEY = intPreferencesKey("max_dice_roll")
+class AppPreferences(private val context: Context) {
+    val getMaxRoll: Flow<Int> = context.dataStore.data
+        .map { preferences ->
+            preferences[MAX_ROLL_KEY] ?: 20
+        }
+
+    suspend fun setMaxRoll(newMaxRoll: Int) {
+        context.dataStore.edit { settings ->
+            settings[MAX_ROLL_KEY] = newMaxRoll
+        }
+    }
+}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = AppPreferences(this)
         enableEdgeToEdge()
         setContent {
             DemoDiceTheme {
-                DiceToplevel()
+                DiceToplevel(prefs)
             }
         }
     }
 }
 
 @Composable
-fun DiceToplevel() {
+fun DiceToplevel(prefs: AppPreferences) {
     var showSettings by remember { mutableStateOf(false) }
-    var maxRoll by remember { mutableIntStateOf(20) }
+    var maxRoll by remember {
+        // WTF FIXME
+        runBlocking {
+            mutableIntStateOf(prefs.getMaxRoll.first())
+        }
+    }
 
     if (!showSettings) {
         DiceMainApp(
@@ -75,7 +106,13 @@ fun DiceToplevel() {
         SettingsDialog(
             hideSettings = { showSettings = false },
             initialMaxRoll = maxRoll,
-            setNewMaxRoll = { maxRoll = it }
+            setNewMaxRoll = {
+                maxRoll = it
+                // WTF FIXME
+                runBlocking {
+                    prefs.setMaxRoll(it)
+                }
+            }
         )
     }
 }
