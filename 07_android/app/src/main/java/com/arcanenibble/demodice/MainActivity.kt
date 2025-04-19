@@ -69,7 +69,7 @@ fun DiceToplevel() {
             showSettings = {
                 showSettings = true
             },
-            maxRoll = {maxRoll},
+            maxRoll = maxRoll,
         )
     } else {
         SettingsDialog(
@@ -85,7 +85,7 @@ fun DiceToplevel() {
 fun DiceMainApp(
     modifier: Modifier = Modifier,
     showSettings: () -> Unit,
-    maxRoll: () -> Int = {20},
+    maxRoll: Int = 20,
 ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -109,7 +109,10 @@ fun DiceMainApp(
             )
         }
     ) { innerPadding ->
-        DiceButton(modifier = Modifier.padding(innerPadding))
+        DiceButton(
+            modifier = Modifier.padding(innerPadding),
+            maxRoll = maxRoll
+        )
     }
 }
 @Preview(showBackground = true)
@@ -123,7 +126,7 @@ fun DiceMainAppPreview() {
 @Composable
 fun DiceButton(
     modifier: Modifier = Modifier,
-    maxRoll: () -> Int = {20}
+    maxRoll: Int = 20
 ) {
     var diceRoll by remember { mutableIntStateOf(0) }
 
@@ -135,7 +138,7 @@ fun DiceButton(
         Button(
             modifier = Modifier.size(width = 200.dp, height = 200.dp),
             onClick = {
-                diceRoll = (1..maxRoll()).random()
+                diceRoll = (1..maxRoll).random()
             }
         ) {
             Text(
