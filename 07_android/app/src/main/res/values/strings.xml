@@ -1,7 +1,7 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Demo Dice</string>
     <string name="roll">Roll!</string>
-    <string name="title">ArcaneNibble Dice App</string>
+    <string name="title">ArcaneNibble Dice App - D<xliff:g id="num_faces">%d</xliff:g></string>
     <string name="settings">Settings</string>
     <string name="back">Back</string>
     <string name="set_max">Max dice roll</string>

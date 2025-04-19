@@ -96,7 +96,7 @@ fun DiceMainApp(
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
-                    Text(stringResource(R.string.title))
+                    Text(stringResource(R.string.title, maxRoll))
                 },
                 actions = {
                     IconButton(onClick = showSettings) {
