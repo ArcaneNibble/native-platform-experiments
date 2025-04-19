@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">演示骰子</string>
+    <string name="roll">掷！</string>
+    <string name="title">ArcaneNibble的演示骰子APP - D<xliff:g id="num_faces">%d</xliff:g></string>
+    <string name="settings">设置</string>
+    <string name="set_max">多少面</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="must_be_num">需要大于0的数字</string>
+</resources>

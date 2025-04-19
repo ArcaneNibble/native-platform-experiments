@@ -3,7 +3,6 @@
     <string name="roll">Roll!</string>
     <string name="title">ArcaneNibble Dice App - D<xliff:g id="num_faces">%d</xliff:g></string>
     <string name="settings">Settings</string>
-    <string name="back">Back</string>
     <string name="set_max">Max dice roll</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
