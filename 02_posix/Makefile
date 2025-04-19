@@ -1,5 +1,5 @@
 .POSIX:
-CFLAGS = -O
+CFLAGS = -O1
 
 dice: dice.c
 
