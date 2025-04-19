@@ -4,4 +4,8 @@
     <string name="title">ArcaneNibble Dice App</string>
     <string name="settings">Settings</string>
     <string name="back">Back</string>
+    <string name="set_max">Max dice roll</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="must_be_num">Must be a number bigger than 0</string>
 </resources>
