@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Settings
@@ -40,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -71,12 +73,9 @@ fun DiceToplevel() {
         )
     } else {
         SettingsDialog(
-            hideSettings = {
-                showSettings = false
-            },
-            setNewMaxRoll = {
-                maxRoll = it
-            }
+            hideSettings = { showSettings = false },
+            initialMaxRoll = maxRoll,
+            setNewMaxRoll = { maxRoll = it }
         )
     }
 }
@@ -163,9 +162,10 @@ fun DiceButtonPreview() {
 fun SettingsDialog(
     modifier: Modifier = Modifier,
     hideSettings: () -> Unit,
+    initialMaxRoll: Int = 20,
     setNewMaxRoll: (Int) -> Unit,
 ) {
-    var maxRollStr by remember { mutableStateOf("") }
+    var maxRollStr by remember { mutableStateOf(initialMaxRoll.toString()) }
     val maxRollIsValid by derivedStateOf {
         val num = maxRollStr.toIntOrNull()
         if (num == null) {
@@ -193,7 +193,17 @@ fun SettingsDialog(
                     OutlinedTextField(
                         value = maxRollStr,
                         onValueChange = { maxRollStr = it },
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number,
+                            imeAction = ImeAction.Done,
+                        ),
+                        keyboardActions = KeyboardActions(onDone = {
+                            if (maxRollIsValid) {
+                                setNewMaxRoll(maxRollStr.toInt())
+                                hideSettings()
+                            }
+                        }),
+                        singleLine = true,
                         label = { Text(stringResource(R.string.set_max)) },
                         modifier = Modifier.padding(16.dp),
                         isError = !maxRollIsValid,
