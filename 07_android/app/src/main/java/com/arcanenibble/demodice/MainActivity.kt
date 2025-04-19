@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
-                    DiceApp(modifier = Modifier.padding(innerPadding))
+                    DiceButton(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun DiceApp(modifier: Modifier = Modifier) {
+fun DiceButton(modifier: Modifier = Modifier) {
     var diceRoll by remember { mutableIntStateOf(0) }
 
     Column(
@@ -58,7 +58,7 @@ fun DiceApp(modifier: Modifier = Modifier) {
         ) {
             Text(
                 text = if (diceRoll == 0) {
-                    stringResource((R.string.roll))
+                    stringResource(R.string.roll)
                 } else {
                     diceRoll.toString()
                 },
@@ -69,8 +69,8 @@ fun DiceApp(modifier: Modifier = Modifier) {
 }
 @Preview(showBackground = true)
 @Composable
-fun DiceAppPreview() {
+fun DiceButtonPreview() {
     DemoDiceTheme {
-        DiceApp()
+        DiceButton()
     }
 }
